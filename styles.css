@@ -165,13 +165,14 @@ h1 em { font-style: normal; color: transparent; background: var(--gradient); bac
 }
 @media (max-width: 700px) {
   .container { width: min(calc(100% - 28px), var(--container)); }
-  .nav { height: 76px; }
-  .theme-toggle { margin-left: auto; margin-right: 8px; }
+  .nav { height: 76px; z-index: 3; }
+  .brand { position: relative; z-index: 3; }
+  .theme-toggle { position: relative; z-index: 3; margin-left: auto; margin-right: 8px; }
   .nav { gap: 8px; }
-  .menu-toggle { display: block; z-index: 2; cursor: pointer; }
+  .menu-toggle { display: block; z-index: 3; cursor: pointer; }
   .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
   .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
-  .nav-links { position: absolute; inset: 12px 14px auto; display: none; flex-direction: column; align-items: stretch; gap: 8px; padding: 76px 20px 22px; border: 1px solid var(--line); border-radius: 22px; background: rgba(7, 8, 21, .96); backdrop-filter: blur(20px); }
+  .nav-links { position: absolute; z-index: 1; inset: 12px 14px auto; display: none; flex-direction: column; align-items: stretch; gap: 8px; padding: 76px 20px 22px; border: 1px solid var(--line); border-radius: 22px; background: rgba(7, 8, 21, .96); backdrop-filter: blur(20px); max-height: calc(100vh - 100px); overflow-y: auto; }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 11px 4px; }
   .hero { min-height: auto; padding-block: 70px 80px; }
@@ -180,14 +181,19 @@ h1 em { font-style: normal; color: transparent; background: var(--gradient); bac
   .text-link { text-align: center; }
   .hero-meta { gap: 16px; justify-content: space-between; }
   .hero-meta div { flex-direction: column; align-items: flex-start; }
-  .hero-visual { min-height: 390px; }
-  .logo-shell { width: 72%; border-radius: 34%; }
-  .floating-note { font-size: .65rem; }
-  .note-one { right: 0; top: 10%; }
-  .note-two { left: 0; bottom: 11%; }
-  .section { padding-block: 82px; }
-  .section-heading { margin-bottom: 38px; }
-  .statement h2, .section-heading h2, .values-intro h2, .contact h2 { font-size: 2.75rem; }
+  .hero-visual { min-height: 320px; }
+  .logo-shell { width: 64%; border-radius: 30%; }
+  .floating-note { font-size: .6rem; padding: 7px 11px; }
+  .note-one { right: 0; top: 8%; }
+  .note-two { left: 0; bottom: 9%; }
+  .section { padding-block: 64px; }
+  .section-heading { margin-bottom: 30px; }
+  .statement h2, .section-heading h2, .values-intro h2, .contact h2 { font-size: 2.25rem; }
+
+  .hero-meta { gap: 12px; margin-top: 44px; }
+  .hero-meta strong { font-size: 1.05rem; }
+  .hero-meta span { font-size: .65rem; }
+  .logo-glow { filter: blur(40px); }
   .values-panel { padding: 28px 22px; border-radius: 26px; }
   .team-grid { grid-template-columns: 1fr; }
   .person { grid-template-columns: 64px 1fr auto; padding: 18px; }
@@ -197,6 +203,30 @@ h1 em { font-style: normal; color: transparent; background: var(--gradient); bac
   .footer .brand, .footer > div { justify-content: center; }
   .footer p { margin: 0; }
 }
+@media (max-width: 480px) {
+  .nav { height: 64px; }
+  .hero { padding-block: 40px 56px; }
+  h1 { font-size: clamp(2.4rem, 14vw, 3.6rem); }
+  .hero-copy > p { font-size: .95rem; margin: 20px 0; }
+  .hero-actions { gap: 14px; }
+  .hero-meta { margin-top: 32px; gap: 8px; }
+  .hero-visual { min-height: 240px; }
+  .logo-shell { width: 54%; }
+  .orbit-one { animation-duration: 16s; }
+  .orbit-two { animation-duration: 12s; }
+  .section { padding-block: 48px; }
+  .statement h2, .section-heading h2, .values-intro h2, .contact h2 { font-size: 1.85rem; }
+  .section-heading { gap: 20px; }
+  .contact { margin-block: 32px 56px; padding: 36px 20px; }
+  .service-card { padding: 24px; min-height: 300px; }
+  .card-icon { margin-bottom: 40px; width: 50px; height: 50px; font-size: 1.2rem; }
+  .service-card h3 { font-size: 1.3rem; }
+  .values-panel { padding: 20px 16px; gap: 24px; }
+  .person { gap: 14px; padding: 14px; }
+  .person img { width: 52px; height: 52px; }
+  .footer { font-size: .72rem; gap: 6px; padding-block: 24px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }

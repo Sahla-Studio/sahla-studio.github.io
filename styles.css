@@ -58,6 +58,9 @@ button { font: inherit; }
 .nav-links > a:not(.button) { transition: color .25s ease; }
 .nav-links > a:not(.button):hover { color: var(--text); }
 .menu-toggle { display: none; border: 0; background: none; width: 44px; height: 44px; padding: 11px; }
+/* ─── Nav actions (theme toggle + hamburger group) ─── */
+.nav-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+
 .menu-toggle span { display: block; height: 2px; margin: 6px 0; background: var(--text); transition: .25s ease; }
 .button {
   display: inline-flex;
@@ -166,17 +169,20 @@ h1 em { font-style: normal; color: transparent; background: var(--gradient); bac
 }
 @media (max-width: 700px) {
   .container { width: min(calc(100% - 28px), var(--container)); }
-  .nav { height: 76px; z-index: 3; }
-  .brand { position: relative; z-index: 3; }
+  .nav { position: relative; height: 76px; z-index: 3; }
+  .brand { position: relative; z-index: 3; flex-shrink: 0; margin-right: 8px; }
+  .brand img { width: 32px; height: 32px; }
+  .brand { gap: 8px; font-size: .92rem; }
 
   .nav { gap: 8px; }
+  .theme-toggle { position: relative; z-index: 3; margin-left: auto; margin-right: 8px; }
   .menu-toggle { display: block; z-index: 3; cursor: pointer; }
   .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
   .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
   .nav-links { position: absolute; z-index: 1; inset: 12px 14px auto; display: none; flex-direction: column; align-items: stretch; gap: 8px; padding: 76px 20px 22px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); backdrop-filter: blur(20px); max-height: calc(100vh - 100px); overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 11px 4px; }
-  .nav-links .theme-toggle { width: 100%; height: 44px; margin-top: 6px; }
+
   .hero { min-height: auto; padding-block: 70px 80px; }
   h1 { font-size: clamp(3.2rem, 16vw, 4.9rem); }
   .hero-actions { align-items: stretch; flex-direction: column; }
@@ -207,7 +213,9 @@ h1 em { font-style: normal; color: transparent; background: var(--gradient); bac
 }
 @media (max-width: 480px) {
   .nav { height: 64px; }
-  .hero { padding-block: 40px 56px; }
+  .brand img { width: 26px; height: 26px; }
+  .brand { gap: 6px; font-size: .82rem; margin-right: 1rem; }
+  .hero { padding-block: 40px 56px;  }
   h1 { font-size: clamp(2.4rem, 14vw, 3.6rem); }
   .hero-copy > p { font-size: .95rem; margin: 20px 0; }
   .hero-actions { gap: 14px; }
@@ -250,7 +258,7 @@ h1 em { font-style: normal; color: transparent; background: var(--gradient); bac
   transition: border-color .25s ease, background .25s ease, color .25s ease;
   flex-shrink: 0;
 }
-.nav-links .theme-toggle { width: 36px; height: 36px; border-radius: 10px; }
+
 .theme-toggle:hover {
   border-color: var(--cyan);
   color: var(--cyan);
